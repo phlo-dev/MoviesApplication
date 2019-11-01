@@ -1,18 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="defaultToolbar">
+    <style name="DefaultToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="navigationIcon">"@drawable/ic_arrow_white</item>
-        <item name="titleTextColor">"@color/white</item>
+        <item name="navigationIcon">@drawable/ic_arrow_white</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <style name="DefaultTabLayout">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabTextColor">@android:color/white</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabIndicatorHeight">1dp</item>
     </style>
 
 </resources>

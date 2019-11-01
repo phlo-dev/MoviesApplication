@@ -3,44 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_graph"
-    app:startDestination="@id/actionFragment">
+    app:startDestination="@id/filmsFragment">
 
     <fragment
-        android:id="@+id/actionFragment"
-        android:name="com.pedro.moviesapplication.features.action.ActionFragment"
-        android:label="ActionFragment"
-        tools:layout="@layout/fragment_action">
+        android:id="@+id/filmsFragment"
+        android:name="com.pedro.moviesapplication.features.FilmsFragment"
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_films">
         <action
-            android:id="@+id/action_actionFragment_to_filmDetailsFragment"
+            android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
             app:destination="@id/filmDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/dramaFragment"
-        android:name="com.pedro.moviesapplication.features.drama.DramaFragment"
-        android:label="DramaFragment"
-        tools:layout="@layout/fragment_drama">
-        <action
-            android:id="@+id/action_dramaFragment_to_filmDetailsFragment"
-            app:destination="@id/filmDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fantasyFragment"
-        android:name="com.pedro.moviesapplication.features.fantasy.FantasyFragment"
-        android:label="FantasyFragment"
-        tools:layout="@layout/fragment_fantasy">
-        <action
-            android:id="@+id/action_fantasyFragment_to_filmDetailsFragment"
-            app:destination="@id/filmDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fictionFragment"
-        android:name="com.pedro.moviesapplication.features.fiction.FictionFragment"
-        android:label="FictionFragment"
-        tools:layout="@layout/fragment_fiction">
-        <action
-            android:id="@+id/action_fictionFragment_to_filmDetailsFragment"
-            app:destination="@id/filmDetailsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/filmDetailsFragment"
         android:name="com.pedro.moviesapplication.features.film_details.FilmDetailsFragment"

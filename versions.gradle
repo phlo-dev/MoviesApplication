@@ -25,7 +25,7 @@ ext{
         recyclerviewVersion        = "1.0.0"
         firebaseVersion            = "16.2.1"
         lottieVersion              = "2.8.0"
-        roomVersion                = "2.1.0"
+        roomVersion                = "2.2.1"
         pieChartVersion            = "v3.1.0"
         multiDexVersion            = "2.0.1"
 

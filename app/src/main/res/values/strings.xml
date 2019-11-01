@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Movies Application</string>
     <string name="movies_label">Movies</string>
+    <string name="action_label">Ação</string>
+    <string name="drama_label">Drama</string>
+    <string name="fantasy_label">Fantasia</string>
+    <string name="fiction_label">Ficção</string>
 </resources>
