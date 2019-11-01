@@ -1,0 +1,37 @@
+ext{
+        androidApplicationId = "com.pedro.moviesapplication"
+
+        sourceCompatibilityVersion = "8"
+        targetCompatibilityVersion = "8"
+        androidBuildToolsVersion   = "29.0.2"
+        androidCompileSdkVersion   = 29
+        androidMinSdkVersion       = 21
+        androidTargetSdkVersion    = 29
+        androidVersionCode         = 1
+        androidVersionName         = "1.0"
+        appCompatVersion           = "1.1.0"
+        navigationVersion          = "1.0.0"
+        androidKtxCoreVersion      = "1.1.0"
+        coroutineVersion           = "1.0.1"
+        koinVersion                = "1.0.2"
+        lifecycleVersion           = "2.2.0-alpha03"
+        constraintLayoutVersion    = "1.1.3"
+        materialVersion            = "1.0.0"
+        retrofitVersion            = "2.6.1"
+        gsonVersion                = "2.8.5"
+        retrofitCoroutineVersion   = "0.9.2"
+        httpIntercptorVersion      = "4.1.0"
+        ankoVersion                = "0.10.8"
+        recyclerviewVersion        = "1.0.0"
+        firebaseVersion            = "16.2.1"
+        lottieVersion              = "2.8.0"
+        roomVersion                = "2.1.0"
+        pieChartVersion            = "v3.1.0"
+        multiDexVersion            = "2.0.1"
+
+        //Tests
+        junitVersion = "4.12"
+        androidTestRunnerVersion = "1.2.0"
+        espressoVersion = "3.2.0"
+        mockitoVersion = "2.23.4"
+}

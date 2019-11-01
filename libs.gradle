@@ -1,0 +1,38 @@
+ext{
+    kotlin               = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    androidKtxCore       = "androidx.core:core-ktx:$androidKtxCoreVersion"
+    coroutine            = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    koinAndroid          = "org.koin:koin-android:$koinVersion"
+    appCompat            = "androidx.appcompat:appcompat:$appCompatVersion"
+    navigationFragment   = "android.arch.navigation:navigation-fragment:$navigationVersion"
+    navigationUi         = "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
+    koinScope            = "org.koin:koin-androidx-scope:$koinVersion"
+    koinViewModel        = "org.koin:koin-androidx-viewmodel:$koinVersion"
+    viewModel            = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    lifecycleXt          = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    material             = "com.google.android.material:material:$materialVersion"
+    gsonConvertFacotory  = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    retrofit             = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofitCoroutine    = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:" +
+                            "$retrofitCoroutineVersion"
+    gson                 = "com.google.code.gson:gson:$gsonVersion"
+    httpInterceptor      = "com.squareup.okhttp3:logging-interceptor:$httpIntercptorVersion"
+    anko                 = "org.jetbrains.anko:anko-commons:$ankoVersion"
+    material             = "com.google.android.material:material:$materialVersion"
+    recyclerview         = "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    firebaseAuth         = "com.google.firebase:firebase-auth:$firebaseVersion"
+    constraintLayout     = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    lottie               = "com.airbnb.android:lottie:${lottieVersion}"
+
+    room                 = "androidx.room:room-runtime:$roomVersion"
+    roomKtx              = "androidx.room:room-ktx:$roomVersion"
+    roomCompiler         = "androidx.room:room-compiler:$roomVersion"
+
+    pieChart             = "com.github.PhilJay:MPAndroidChart:$pieChartVersion"
+
+    multiDex             = "androidx.multidex:multidex:$multiDexVersion"
+    //Tests
+    junit = "junit:junit:$junitVersion"
+    androidTestRunner = "androidx.test:runner:$androidTestRunnerVersion"
+    espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
+}
