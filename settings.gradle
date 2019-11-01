@@ -1,2 +1,2 @@
-include ':app', ':presentation'
+include ':app', ':presentation', ':data_remote', ':domain', ':data_local', ':data', ':dependencies'
 rootProject.name='Movies Application'
