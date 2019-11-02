@@ -5,4 +5,6 @@
     <string name="drama_label">Drama</string>
     <string name="fantasy_label">Fantasia</string>
     <string name="fiction_label">Ficção</string>
+    <string name="search_label">Pesquisa</string>
+    <string name="hint_search_film">Digite o nome do filme</string>
 </resources>

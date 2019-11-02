@@ -8,14 +8,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.pedro.moviesapplication.extensions.toast
 import com.pedro.presentation.ViewState
 import com.pedro.presentation.extensions.handleWithFlow
 
 open class BaseFragment : Fragment() {
     val navController by lazy { findNavController(this) }
+    private var toastError: Toast? = null
 
     open fun handleErrors(throwable: Throwable) {
-        Toast.makeText(requireContext(), throwable.message ?: "", Toast.LENGTH_LONG).show()
+        toastError?.cancel()
+        toastError = requireContext().toast(throwable.message?: "")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
