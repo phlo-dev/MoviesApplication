@@ -1,23 +1,18 @@
 package com.pedro.moviesapplication.features
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
-import androidx.transition.ChangeTransform
-import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.ViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.getDrawable
 import com.pedro.moviesapplication.extensions.setOnQueryTextListener
 import com.pedro.moviesapplication.extensions.setupToolbar
+import com.pedro.moviesapplication.extensions.toast
 import com.pedro.moviesapplication.features.action.ActionFragment
 import com.pedro.moviesapplication.features.drama.DramaFragment
 import com.pedro.moviesapplication.features.fantasy.FantasyFragment
 import com.pedro.moviesapplication.features.fiction.FictionFragment
-import com.pedro.moviesapplication.utils.SearchItem
 import kotlinx.android.synthetic.main.fragment_films.*
 
 class FilmsFragment : BaseFragment() {
@@ -50,26 +45,8 @@ class FilmsFragment : BaseFragment() {
         (menu.findItem(R.id.item_menu_search)?.actionView as? SearchView)?.run {
             queryHint = getString(R.string.hint_search_film)
             setOnQueryTextListener { query ->
-                val position = filmViewPager.currentItem
-                if (position < 0 || position >= filmViewPager.adapter?.count ?: position) return@setOnQueryTextListener
-
-                val selectedFragment =
-                    (filmViewPager.adapter as? ViewPagerAdapter)?.getItem(position)
-                        ?: return@setOnQueryTextListener
-
-                if (selectedFragment is SearchItem && selectedFragment.isVisible) {
-                    selectedFragment.search(query)
-                }
+                toast(query)
             }
-            setOnCloseListener { animateChangeColor(getDrawable(R.color.white)); true }
-            setOnSearchClickListener { animateChangeColor(getDrawable(R.color.colorPrimary)) }
         }
-    }
-
-    private fun animateChangeColor(drawable: Drawable?) {
-        TransitionManager.beginDelayedTransition(
-            filmToolbar, TransitionSet().addTransition(ChangeTransform())
-        )
-        filmToolbar.background = drawable
     }
 }

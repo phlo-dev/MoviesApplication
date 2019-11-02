@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
             app:destination="@id/filmDetailsFragment" />
+        <action
+            android:id="@+id/action_filmsFragment_to_searchFilmFragment"
+            app:destination="@id/searchFilmFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,15 @@
         android:name="com.pedro.moviesapplication.features.film_details.FilmDetailsFragment"
         android:label="FilmDetailsFragment"
         tools:layout="@layout/fragment_film_details" />
+
+    <fragment
+        android:id="@+id/searchFilmFragment"
+        android:name="com.pedro.moviesapplication.features.search_film.SearchFilmFragment"
+        android:label="SearchFilmFragment"
+        tools:layout="@layout/fragment_search_film">
+        <action
+            android:id="@+id/action_searchFilmFragment_to_filmDetailsFragment"
+            app:destination="@id/filmDetailsFragment" />
+    </fragment>
+
 </navigation>
