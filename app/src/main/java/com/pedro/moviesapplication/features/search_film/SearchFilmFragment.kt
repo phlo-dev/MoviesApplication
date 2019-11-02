@@ -1,16 +1,16 @@
 package com.pedro.moviesapplication.features.search_film
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.appcompat.widget.SearchView
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.FilmAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.safeNavigate
 import com.pedro.moviesapplication.extensions.setOnQueryTextListener
-import com.pedro.moviesapplication.features.FilmsFragmentDirections
+import com.pedro.moviesapplication.extensions.setupToolbar
+import com.pedro.moviesapplication.extensions.toast
 import com.pedro.presentation.models.Film
 import kotlinx.android.synthetic.main.fragment_search_film.*
 
@@ -27,14 +27,30 @@ class SearchFilmFragment : BaseFragment() {
     )
 
     override fun setupViews() {
-        filmSearchView.setupSearchView()
+        setupToolbar(R.id.searchToolbar, setUpNavigation = true)
         searchFilmRecyclerView.adapter = FilmAdapter(listOf()) { onClickFilm(it) }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
+        menu.findItem(R.id.item_menu_search_view)?.run {
+            (actionView as? SearchView)?.setupSearchView()
+            expandActionView()
+        }
     }
 
     private fun SearchView.setupSearchView() {
         queryHint = getString(R.string.hint_search_film)
         setOnQueryTextListener { query ->
-
+            toast(query)
         }
+        setOnCloseListener {
+            navController.navigateUp()
+            isEnabled = false
+            true
+        }
+        setOnSearchClickListener { layoutParams.width = MATCH_PARENT }
+        setIconifiedByDefault(false)
+        isIconified = true
     }
 }
