@@ -2,13 +2,11 @@ package com.pedro.moviesapplication.features
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.ViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.setOnQueryTextListener
+import com.pedro.moviesapplication.extensions.safeNavigate
 import com.pedro.moviesapplication.extensions.setupToolbar
-import com.pedro.moviesapplication.extensions.toast
 import com.pedro.moviesapplication.features.action.ActionFragment
 import com.pedro.moviesapplication.features.drama.DramaFragment
 import com.pedro.moviesapplication.features.fantasy.FantasyFragment
@@ -33,6 +31,13 @@ class FilmsFragment : BaseFragment() {
         )
         filmViewPager.adapter = ViewPagerAdapter(childFragmentManager, fragmentList)
         filmTabLayout.setupWithViewPager(filmViewPager)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_menu_search) navController.safeNavigate(
+            FilmsFragmentDirections.actionFilmsFragmentToSearchFilmFragment()
+        )
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

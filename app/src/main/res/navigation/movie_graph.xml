@@ -36,9 +36,6 @@
         <action
             android:id="@+id/action_searchFilmFragment_to_filmDetailsFragment"
             app:destination="@id/filmDetailsFragment" />
-        <argument
-            android:name="query"
-            app:argType="string" />
     </fragment>
 
 </navigation>
