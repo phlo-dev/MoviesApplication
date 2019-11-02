@@ -3,6 +3,7 @@
 package com.pedro.moviesapplication.base
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -18,7 +19,15 @@ open class BaseFragment : Fragment() {
 
     open fun handleErrors(throwable: Throwable) {
         toastError?.cancel()
-        toastError = requireContext().toast(throwable.message?: "")
+        toastError = requireContext().toast(throwable.message ?: "")
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> navController.navigateUp()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

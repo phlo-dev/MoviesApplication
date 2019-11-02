@@ -38,15 +38,6 @@ class FilmsFragment : BaseFragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_film, menu)
-        setupSearchView(menu)
     }
 
-    private fun setupSearchView(menu: Menu) {
-        (menu.findItem(R.id.item_menu_search)?.actionView as? SearchView)?.run {
-            queryHint = getString(R.string.hint_search_film)
-            setOnQueryTextListener { query ->
-                toast(query)
-            }
-        }
-    }
 }

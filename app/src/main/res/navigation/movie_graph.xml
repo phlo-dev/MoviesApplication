@@ -22,7 +22,11 @@
         android:id="@+id/filmDetailsFragment"
         android:name="com.pedro.moviesapplication.features.film_details.FilmDetailsFragment"
         android:label="FilmDetailsFragment"
-        tools:layout="@layout/fragment_film_details" />
+        tools:layout="@layout/fragment_film_details" >
+        <argument
+            android:name="film"
+            app:argType="com.pedro.presentation.models.Film" />
+    </fragment>
 
     <fragment
         android:id="@+id/searchFilmFragment"
@@ -32,6 +36,9 @@
         <action
             android:id="@+id/action_searchFilmFragment_to_filmDetailsFragment"
             app:destination="@id/filmDetailsFragment" />
+        <argument
+            android:name="query"
+            app:argType="string" />
     </fragment>
 
 </navigation>

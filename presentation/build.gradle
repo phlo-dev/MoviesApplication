@@ -17,6 +17,9 @@ android {
         }
     }
     buildToolsVersion = androidBuildToolsVersion
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {

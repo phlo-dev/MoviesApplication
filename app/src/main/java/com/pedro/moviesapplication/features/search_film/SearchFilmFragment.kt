@@ -4,8 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import com.pedro.moviesapplication.R
+import com.pedro.moviesapplication.adapter.FilmAdapter
 import com.pedro.moviesapplication.base.BaseFragment
+import com.pedro.moviesapplication.extensions.setOnQueryTextListener
+import com.pedro.moviesapplication.features.FilmsFragmentDirections
+import com.pedro.presentation.models.Film
+import kotlinx.android.synthetic.main.fragment_search_film.*
 
 class SearchFilmFragment : BaseFragment() {
 
@@ -15,4 +21,19 @@ class SearchFilmFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_search_film, container, false)
 
+    private fun onClickFilm(item: Film) {
+
+    }
+
+    override fun setupViews() {
+        filmSearchView.setupSearchView()
+        searchFilmRecyclerView.adapter = FilmAdapter(listOf()) { onClickFilm(it) }
+    }
+
+    private fun SearchView.setupSearchView() {
+        queryHint = getString(R.string.hint_search_film)
+        setOnQueryTextListener { query ->
+            FilmsFragmentDirections.actionFilmsFragmentToSearchFilmFragment(query)
+        }
+    }
 }

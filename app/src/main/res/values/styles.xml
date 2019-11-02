@@ -29,4 +29,24 @@
         <item name="spanCount">2</item>
     </style>
 
+    <style name="TextViewPoppinsRegular">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="TextViewPoppinsRegular18sp" parent="TextViewPoppinsRegular">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextViewPoppinsRegular18spBold" parent="TextViewPoppinsRegular18sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewBlack">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextViewBlackBold" parent="TextViewBlack">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

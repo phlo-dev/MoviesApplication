@@ -26,7 +26,7 @@ ext{
         firebaseVersion            = "16.2.1"
         lottieVersion              = "2.8.0"
         roomVersion                = "2.2.1"
-        pieChartVersion            = "v3.1.0"
+        picassoVersion             = "2.71828"
         multiDexVersion            = "2.0.1"
 
         //Tests

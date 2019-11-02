@@ -26,6 +26,9 @@ android {
         targetCompatibility = targetCompatibilityVersion
     }
     buildToolsVersion = androidBuildToolsVersion
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {

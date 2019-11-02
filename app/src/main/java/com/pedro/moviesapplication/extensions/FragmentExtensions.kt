@@ -1,5 +1,6 @@
 package com.pedro.moviesapplication.extensions
 
+import android.app.Activity
 import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
 import androidx.annotation.ColorRes
@@ -7,6 +8,8 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
+import androidx.navigation.navArgs
 
 fun Fragment.setupToolbar(
     toolbarId: Int,
@@ -35,3 +38,5 @@ fun Fragment.getDrawable(@DrawableRes drawableId: Int) =
     ContextCompat.getDrawable(requireContext(), drawableId)
 
 fun Fragment.getColor(@ColorRes colorId: Int) = ContextCompat.getColor(requireContext(), colorId)
+
+inline fun <reified Args : NavArgs> Fragment.navArgs() = requireActivity().navArgs<Args>()

@@ -8,4 +8,5 @@
     <string name="search_label">Pesquisa</string>
     <string name="hint_search_film">Digite o nome do filme</string>
     <string name="image_film_description">Imagem do filme</string>
+    <string name="description_label">Descrição</string>
 </resources>
