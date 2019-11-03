@@ -9,7 +9,12 @@ interface MoviesWebService {
     @GET(MOVIES_PATH)
     fun getMovies(
         @Query(PAGE_QUERY) page: Int,
-        @Query(GENRE_MOVIES_QUERY) genreId: Int,
-        @Query(LANGUAGE_QUERY) language: String = LANGUAGE_PT_VALUE
+        @Query(GENRE_MOVIES_QUERY) genreId: Int
+    ): MovieListResponse
+
+    @GET(SEARCH_PATH)
+    fun searchMovieByQuery(
+        @Query(SEARCH_QUERY) query: String,
+        @Query(PAGE_QUERY) page: Int
     ): MovieListResponse
 }

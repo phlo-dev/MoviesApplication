@@ -1,14 +1,11 @@
 package com.pedro.di
 
-import com.pedro.data_remote.factory.RequestInterceptor
-import com.pedro.data_remote.factory.ServiceClientFactory
+import com.pedro.data.remote.MovieRemoteRepository
+import com.pedro.data_remote.repository.MovieRemoteRepositoryImpl
 import org.koin.dsl.module.module
 
 val dataRemoteModule = module {
-    single { ServiceClientFactory.createHttpLoggingInterceptor() }
 
-    single { ServiceClientFactory.createOkHttpClient(get(), get(), get(), get()) }
-
-    single { RequestInterceptor() }
+    factory { MovieRemoteRepositoryImpl(moviesWebService = get()) as MovieRemoteRepository }
 
 }
