@@ -16,9 +16,9 @@ class MoviesFetchUseCase(
     private var currentPage = 1
     private var totalPage = 1
 
-    override suspend fun getResult(params: GenreTypeParamEnum): Response<List<Movie>> {
-        if (hasNoMoreResult()) return Response.Success(listOf())
-        return when (params) {
+    override suspend fun getResult(param: GenreTypeParamEnum): Response<List<Movie>> {
+        if (!hasMoreResults()) return Response.Success(listOf())
+        return when (param) {
             ACTION -> movieRepository.getActionMovies(currentPage).convertToPresentation()
             DRAMA -> movieRepository.getDramaMovies(currentPage).convertToPresentation()
             FANTASY -> movieRepository.getFantasyMovies(currentPage).convertToPresentation()
@@ -26,7 +26,7 @@ class MoviesFetchUseCase(
         }
     }
 
-    fun hasNoMoreResult() = currentPage > totalPage
+    fun hasMoreResults() = currentPage <= totalPage
 
     private suspend fun Response<ListPagination<Movie>>.convertToPresentation() = map {
         movieList.addAll(it.list)

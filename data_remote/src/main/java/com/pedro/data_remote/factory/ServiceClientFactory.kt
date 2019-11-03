@@ -35,18 +35,14 @@ object ServiceClientFactory {
         }
 
     fun createOkHttpClient(
-        requestInterceptor: RequestInterceptor, httpLoggingInterceptor: HttpLoggingInterceptor,
-        socketFactory: SSLSocketFactory? = null, trustManager: X509TrustManager? = null
+        requestInterceptor: RequestInterceptor, httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
 
         with(clientBuilder) {
-            if (socketFactory != null && trustManager != null) {
-                sslSocketFactory(socketFactory, trustManager).addInterceptor(requestInterceptor)
-            } else {
-                addInterceptor(httpLoggingInterceptor)
-                addInterceptor(requestInterceptor)
-            }
+            addInterceptor(httpLoggingInterceptor)
+            addInterceptor(requestInterceptor)
+
             connectTimeout(30, TimeUnit.SECONDS)
             readTimeout(30, TimeUnit.SECONDS)
             writeTimeout(30, TimeUnit.SECONDS)

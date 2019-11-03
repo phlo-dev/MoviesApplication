@@ -12,15 +12,15 @@ import org.koin.standalone.inject
 abstract class UseCase<P, R>(private val scope: CoroutineScope) : KoinComponent {
     private val threadContextProvider: ThreadContextProvider by inject()
 
-    protected abstract suspend fun getResult(params: P): Response<R>
+    protected abstract suspend fun getResult(param: P): Response<R>
 
     fun execute(
-        params: P,
+        param: P,
         onSuccess: (R) -> Unit,
         onFailure: (Throwable) -> Unit
     ) {
         scope.launch(threadContextProvider.io) {
-            val result = getResult(params)
+            val result = getResult(param)
             withContext(threadContextProvider.main) {
                 when (result) {
                     is Response.Success -> onSuccess(result.data)

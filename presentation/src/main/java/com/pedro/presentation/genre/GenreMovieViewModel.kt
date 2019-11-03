@@ -14,7 +14,7 @@ class GenreMovieViewModel : ViewModel(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun fetchMovieListByGenre() {
         if(genreMoviesViewState.value?.isLoading() == true) return
-        
+
     }
 
     fun getGenreMoviesViewState() = genreMoviesViewState.asLiveData()
