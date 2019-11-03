@@ -37,6 +37,7 @@ class SearchUseCase(
 
     private fun checkIfIsRefresh(param: String) {
         if(param == query) return
+        query = param
         currentPage = 1
         totalPage = 1
         movieList.clear()

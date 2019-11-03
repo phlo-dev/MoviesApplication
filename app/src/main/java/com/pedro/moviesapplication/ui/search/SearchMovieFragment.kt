@@ -9,6 +9,7 @@ import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.addScrollListener
+import com.pedro.moviesapplication.extensions.hideKeyboard
 import com.pedro.moviesapplication.extensions.setOnQueryTextListener
 import com.pedro.moviesapplication.extensions.setupToolbar
 import com.pedro.presentation.models.Movie
@@ -40,6 +41,11 @@ class SearchMovieFragment : BaseFragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        hideKeyboard()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_search, menu)
         menu.findItem(R.id.item_menu_search_view)?.run {
@@ -68,7 +74,10 @@ class SearchMovieFragment : BaseFragment() {
 
     private fun SearchView.setupSearchView() {
         queryHint = getString(R.string.hint_search_film)
-        setOnQueryTextListener { viewModel.search(it) }
+        setOnQueryTextListener {
+            viewModel.search(it)
+            hideKeyboard()
+        }
         setIconifiedByDefault(false)
         setOnSearchClickListener { layoutParams.width = MATCH_PARENT }
     }

@@ -15,10 +15,11 @@ import com.pedro.presentation.models.GenreTypeEnum
 import com.pedro.presentation.models.Movie
 import kotlinx.android.synthetic.main.fragment_genre_movie.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class GenreMovieFragment : BaseFragment() {
-    private var genreType: GenreTypeEnum = GenreTypeEnum.ACTION //default genre
-    private val viewModel by viewModel<GenreMovieViewModel>()
+    private var genreType: GenreTypeEnum = GenreTypeEnum.ACTION
+    private val viewModel by viewModel<GenreMovieViewModel>{ parametersOf(genreType) }
     private val movieAdapter by lazy { MovieAdapter { onClickMovie(it) } }
 
     override fun onCreateView(
@@ -27,7 +28,7 @@ class GenreMovieFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_genre_movie, container, false)
 
-    private fun onClickMovie(item: Movie) = navController.navigate(
+    private fun onClickMovie(item: Movie) = navController.safeNavigate(
         MoviesFragmentDirections.actionFilmsFragmentToFilmDetailsFragment(item)
     )
 
@@ -46,7 +47,6 @@ class GenreMovieFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.genreType = genreType
         lifecycle.addObserver(viewModel)
     }
 
