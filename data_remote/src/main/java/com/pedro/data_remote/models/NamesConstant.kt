@@ -3,6 +3,7 @@ package com.pedro.data_remote.models
 const val TOTAL_PAGE = "total_pages"
 const val TOTAL_RESULTS = "total_results"
 const val BACKDROP_PATH = "backdrop_path"
+const val RESULTS = "results"
 const val GENRE_IDS = "genre_ids"
 const val ORIGINAL_LANGUAGE = "original_language"
 const val ORIGINAL_TITLE = "original_title"
