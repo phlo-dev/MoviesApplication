@@ -20,7 +20,7 @@ class FilmDetailsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_film_details, container, false)
 
-    override fun setupViews() = args.film.run {
+    override fun setupViews() = args.movie.run {
         setupToolbar(R.id.filmDetailsToolbar, name, true, hasOptionMenu = false)
         filmDetailsImageView.loadImageUrl(image, R.drawable.ic_movies_placeholder)
         filmDescriptionDetailsTextView.text = description

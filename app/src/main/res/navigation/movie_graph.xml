@@ -24,8 +24,8 @@
         android:label="FilmDetailsFragment"
         tools:layout="@layout/fragment_film_details" >
         <argument
-            android:name="film"
-            app:argType="com.pedro.presentation.models.Film" />
+            android:name="movie"
+            app:argType="com.pedro.presentation.models.Movie" />
     </fragment>
 
     <fragment

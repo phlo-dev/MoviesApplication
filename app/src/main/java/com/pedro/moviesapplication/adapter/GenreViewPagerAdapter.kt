@@ -1,18 +1,19 @@
 package com.pedro.moviesapplication.adapter
 
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.pedro.moviesapplication.base.BaseFragment
+import com.pedro.moviesapplication.features.genre.GenreMovieFragment
+import com.pedro.presentation.models.GenreTypeEnum
 
-class ViewPagerAdapter(
+class GenreViewPagerAdapter(
     fm: FragmentManager,
-    private val fragmentList: List<Pair<BaseFragment, CharSequence>>
+    private val fragmentList: List<Pair<GenreTypeEnum, CharSequence>>
 ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getPageTitle(position: Int): CharSequence = fragmentList[position].second
 
-    override fun getItem(position: Int): Fragment = fragmentList[position].first
+    override fun getItem(position: Int) =
+        GenreMovieFragment.newInstance(GenreTypeEnum.getGenre(position))
 
     override fun getCount(): Int = fragmentList.size
 }

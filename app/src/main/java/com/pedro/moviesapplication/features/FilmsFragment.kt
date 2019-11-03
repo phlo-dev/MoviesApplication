@@ -3,14 +3,11 @@ package com.pedro.moviesapplication.features
 import android.os.Bundle
 import android.view.*
 import com.pedro.moviesapplication.R
-import com.pedro.moviesapplication.adapter.ViewPagerAdapter
+import com.pedro.moviesapplication.adapter.GenreViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.safeNavigate
 import com.pedro.moviesapplication.extensions.setupToolbar
-import com.pedro.moviesapplication.features.action.ActionFragment
-import com.pedro.moviesapplication.features.drama.DramaFragment
-import com.pedro.moviesapplication.features.fantasy.FantasyFragment
-import com.pedro.moviesapplication.features.fiction.FictionFragment
+import com.pedro.presentation.models.GenreTypeEnum.*
 import kotlinx.android.synthetic.main.fragment_films.*
 
 class FilmsFragment : BaseFragment() {
@@ -23,13 +20,13 @@ class FilmsFragment : BaseFragment() {
 
     override fun setupViews() {
         setupToolbar(R.id.filmToolbar, R.string.movies_label)
-        val fragmentList = listOf(
-            ActionFragment() as BaseFragment to getString(R.string.action_label),
-            DramaFragment() as BaseFragment to getString(R.string.drama_label),
-            FantasyFragment() as BaseFragment to getString(R.string.fantasy_label),
-            FictionFragment() as BaseFragment to getString(R.string.fiction_label)
+        val fragmentHelperList = listOf(
+            ACTION to getString(R.string.action_label),
+            DRAMA to getString(R.string.drama_label),
+            FANTASY to getString(R.string.fantasy_label),
+            FICTION to getString(R.string.fiction_label)
         )
-        filmViewPager.adapter = ViewPagerAdapter(childFragmentManager, fragmentList)
+        filmViewPager.adapter = GenreViewPagerAdapter(childFragmentManager, fragmentHelperList)
         filmTabLayout.setupWithViewPager(filmViewPager)
     }
 

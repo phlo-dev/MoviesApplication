@@ -5,13 +5,16 @@ import android.view.*
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.appcompat.widget.SearchView
 import com.pedro.moviesapplication.R
-import com.pedro.moviesapplication.adapter.FilmAdapter
+import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.*
-import com.pedro.presentation.models.Film
+import com.pedro.presentation.models.Movie
+import com.pedro.presentation.search.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search_film.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFilmFragment : BaseFragment() {
+    private val viewModel by viewModel<SearchViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,13 +22,13 @@ class SearchFilmFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_search_film, container, false)
 
-    private fun onClickFilm(item: Film) = navController.safeNavigate(
+    private fun onClickFilm(item: Movie) = navController.safeNavigate(
         SearchFilmFragmentDirections.actionSearchFilmFragmentToFilmDetailsFragment(item)
     )
 
     override fun setupViews() {
         setupToolbar(R.id.searchToolbar, setUpNavigation = true)
-        searchFilmRecyclerView.adapter = FilmAdapter(listOf()) { onClickFilm(it) }
+        searchFilmRecyclerView.adapter = MovieAdapter(listOf()) { onClickFilm(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -46,7 +49,10 @@ class SearchFilmFragment : BaseFragment() {
             isEnabled = false
             true
         }
+        setOnSearchClickListener {
+            toast("1")
+        }
+        setIconifiedByDefault(false)
         setOnSearchClickListener { layoutParams.width = MATCH_PARENT }
-        isIconified = true
     }
 }

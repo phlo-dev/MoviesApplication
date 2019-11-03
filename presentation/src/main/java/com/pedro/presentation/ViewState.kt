@@ -17,6 +17,8 @@ data class ViewState<D>(val status: Status, val data: D? = null, val throwable: 
 
     }
 
+    fun isLoading() = status == LOADING
+
     enum class Status { SUCCESS, ERROR, LOADING, NEUTRAL }
 
 }
