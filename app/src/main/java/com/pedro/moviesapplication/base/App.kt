@@ -14,7 +14,6 @@ class App : MultiDexApplication() {
                 presentationModule,
                 domainModule,
                 dataModule,
-                dataLocalModule,
                 dataRemoteModule,
                 remoteWebServicesModule
             )

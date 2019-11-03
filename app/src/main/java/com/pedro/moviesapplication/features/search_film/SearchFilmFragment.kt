@@ -7,10 +7,7 @@ import androidx.appcompat.widget.SearchView
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.FilmAdapter
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.safeNavigate
-import com.pedro.moviesapplication.extensions.setOnQueryTextListener
-import com.pedro.moviesapplication.extensions.setupToolbar
-import com.pedro.moviesapplication.extensions.toast
+import com.pedro.moviesapplication.extensions.*
 import com.pedro.presentation.models.Film
 import kotlinx.android.synthetic.main.fragment_search_film.*
 
@@ -45,12 +42,11 @@ class SearchFilmFragment : BaseFragment() {
             toast(query)
         }
         setOnCloseListener {
-            navController.navigateUp()
+            navController.safeNavigateUp()
             isEnabled = false
             true
         }
         setOnSearchClickListener { layoutParams.width = MATCH_PARENT }
-        setIconifiedByDefault(false)
         isIconified = true
     }
 }

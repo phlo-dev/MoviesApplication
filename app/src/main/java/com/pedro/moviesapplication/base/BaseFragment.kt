@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.pedro.moviesapplication.extensions.safeNavigateUp
 import com.pedro.moviesapplication.extensions.toast
 import com.pedro.presentation.ViewState
 import com.pedro.presentation.extensions.handleWithFlow
@@ -24,7 +25,7 @@ open class BaseFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> navController.navigateUp()
+            android.R.id.home -> navController.safeNavigateUp()
             else -> return super.onOptionsItemSelected(item)
         }
         return true

@@ -45,3 +45,5 @@ fun NavController.safeNavigate(directions: NavDirections){
         navigate(directions)
     }catch (ignore: Throwable){}
 }
+
+fun NavController.safeNavigateUp() = try { navigateUp() }catch (ignored: Exception){ true }
