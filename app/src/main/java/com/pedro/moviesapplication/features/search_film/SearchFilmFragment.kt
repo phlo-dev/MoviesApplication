@@ -31,6 +31,11 @@ class SearchFilmFragment : BaseFragment() {
     override fun setupViews() {
         setupToolbar(R.id.searchToolbar, setUpNavigation = true)
         searchFilmRecyclerView.adapter = movieAdapter
+        searchFilmRecyclerView.addScrollListener { lasVisibleItem ->
+            if(lasVisibleItem >= movieAdapter.itemCount && viewModel.hasMoreResults()){
+                viewModel.search()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

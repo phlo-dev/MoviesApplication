@@ -13,7 +13,7 @@ class SearchViewModel : ViewModel(), KoinComponent {
     private val searchUseCase: SearchUseCase by useCase()
     private var searchQuery = ""
 
-    fun search(query: String) {
+    fun search(query: String = searchQuery) {
         if (queryViewState.value?.isLoading() == true) searchUseCase.cancel()
         searchQuery = query
         queryViewState.value = loading()
@@ -29,7 +29,7 @@ class SearchViewModel : ViewModel(), KoinComponent {
     fun getQueryViewState() = queryViewState.asLiveData()
 
     override fun onCleared() {
-        super.onCleared()
         searchUseCase.cancel()
+        super.onCleared()
     }
 }

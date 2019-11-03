@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.pedro.moviesapplication.R
 import com.squareup.picasso.Picasso
 
@@ -38,4 +40,17 @@ fun ImageView.loadImageUrl(url: String?, @DrawableRes placeHolder: Int? = null) 
         .fit()
         .centerCrop()
         .into(this)
+}
+
+fun RecyclerView.addScrollListener(
+    function: (Int) -> Unit
+) {
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            val layoutManager = recyclerView.layoutManager as GridLayoutManager
+            val lastVisibleItem = layoutManager.findLastVisibleItemPosition() + 1
+            function(lastVisibleItem)
+        }
+    })
 }

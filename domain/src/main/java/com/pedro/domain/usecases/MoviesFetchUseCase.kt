@@ -36,12 +36,12 @@ class MoviesFetchUseCase(
     }
 
     fun refresh(
-        params: GenreTypeParamEnum,
+        param: GenreTypeParamEnum,
         onSuccess: (List<Movie>) -> Unit,
         onFailure: (Throwable) -> Unit
     ) {
         movieList.clear()
         currentPage = 1
-        execute(params, onSuccess, onFailure)
+        execute(param, onSuccess, onFailure)
     }
 }

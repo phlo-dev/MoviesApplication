@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
+import com.pedro.moviesapplication.extensions.addScrollListener
 import com.pedro.moviesapplication.features.FilmsFragmentDirections
 import com.pedro.presentation.genre.GenreMovieViewModel
 import com.pedro.presentation.models.GenreTypeEnum
@@ -31,6 +33,15 @@ class GenreMovieFragment : BaseFragment() {
 
     override fun setupViews() {
         genreMoviesRecyclerView.adapter = movieAdapter
+        genreMoviesRecyclerView.addScrollListener { lastVisibleItem ->
+            if(lastVisibleItem == movieAdapter.itemCount && viewModel.hasMoreResults()){
+                viewModel.fetchMovieListByGenre()
+            }
+        }
+        genreMovieRefreshLayout.setOnRefreshListener {
+            genreMoviesProgressBar.isVisible = false
+            viewModel.refreshMovieList()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,9 +57,12 @@ class GenreMovieFragment : BaseFragment() {
 
     override fun creatingObservers() {
         viewModel.getGenreMoviesViewState().handleWithFlow(
-            onLoading = {},
-            onComplete = {},
-            onSuccess = {}
+            onLoading = { genreMoviesProgressBar.isVisible = true },
+            onComplete = {
+                genreMoviesProgressBar.isVisible = false
+                genreMovieRefreshLayout.isRefreshing = false
+            },
+            onSuccess = { movieAdapter.list = it }
         )
     }
 
