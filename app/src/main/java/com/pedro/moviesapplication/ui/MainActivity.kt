@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.features
+package com.pedro.moviesapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

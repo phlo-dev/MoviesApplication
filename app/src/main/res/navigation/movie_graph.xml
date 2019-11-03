@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/filmsFragment"
-        android:name="com.pedro.moviesapplication.features.FilmsFragment"
+        android:name="com.pedro.moviesapplication.ui.MoviesFragment"
         android:label="FilmsFragment"
-        tools:layout="@layout/fragment_films">
+        tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
             app:destination="@id/filmDetailsFragment" />
@@ -20,9 +20,9 @@
 
     <fragment
         android:id="@+id/filmDetailsFragment"
-        android:name="com.pedro.moviesapplication.features.film_details.FilmDetailsFragment"
+        android:name="com.pedro.moviesapplication.ui.details.MovieDetailsFragment"
         android:label="FilmDetailsFragment"
-        tools:layout="@layout/fragment_film_details" >
+        tools:layout="@layout/fragment_movie_details" >
         <argument
             android:name="movie"
             app:argType="com.pedro.presentation.models.Movie" />
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/searchFilmFragment"
-        android:name="com.pedro.moviesapplication.features.search_film.SearchFilmFragment"
+        android:name="com.pedro.moviesapplication.ui.search.SearchMovieFragment"
         android:label="SearchFilmFragment"
         tools:layout="@layout/fragment_search_film">
         <action

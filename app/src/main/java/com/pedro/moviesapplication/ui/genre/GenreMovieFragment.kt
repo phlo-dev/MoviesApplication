@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.features.genre
+package com.pedro.moviesapplication.ui.genre
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.addScrollListener
-import com.pedro.moviesapplication.features.FilmsFragmentDirections
+import com.pedro.moviesapplication.ui.MoviesFragmentDirections
 import com.pedro.presentation.genre.GenreMovieViewModel
 import com.pedro.presentation.models.GenreTypeEnum
 import com.pedro.presentation.models.Movie
@@ -27,8 +27,8 @@ class GenreMovieFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_genre_movie, container, false)
 
-    private fun onClickMovie(item: Movie) = navController.safeNavigate(
-        FilmsFragmentDirections.actionFilmsFragmentToFilmDetailsFragment(item)
+    private fun onClickMovie(item: Movie) = navController.navigate(
+        MoviesFragmentDirections.actionFilmsFragmentToFilmDetailsFragment(item)
     )
 
     override fun setupViews() {

@@ -2,10 +2,7 @@ package com.pedro.domain.usecases
 
 import com.pedro.domain.models.Response
 import com.pedro.domain.models.ThreadContextProvider
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
@@ -30,5 +27,5 @@ abstract class UseCase<P, R>(private val scope: CoroutineScope) : KoinComponent 
         }
     }
 
-    fun cancel() = scope.coroutineContext.cancel()
+    fun cancel() = scope.coroutineContext.cancelChildren()
 }

@@ -37,5 +37,3 @@ fun Fragment.getDrawable(@DrawableRes drawableId: Int) =
     ContextCompat.getDrawable(requireContext(), drawableId)
 
 fun Fragment.getColor(@ColorRes colorId: Int) = ContextCompat.getColor(requireContext(), colorId)
-
-inline fun <reified Args : NavArgs> Fragment.navArgs() = requireActivity().navArgs<Args>()

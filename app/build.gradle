@@ -25,6 +25,9 @@ android {
         sourceCompatibility = sourceCompatibilityVersion
         targetCompatibility = targetCompatibilityVersion
     }
+    kotlinOptions {
+        jvmTarget = jvmTargetVersion
+    }
     buildToolsVersion = androidBuildToolsVersion
     androidExtensions {
         experimental = true

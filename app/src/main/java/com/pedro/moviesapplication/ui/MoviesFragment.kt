@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.features
+package com.pedro.moviesapplication.ui
 
 import android.os.Bundle
 import android.view.*
@@ -7,15 +7,15 @@ import com.pedro.moviesapplication.adapter.GenreViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.setupToolbar
 import com.pedro.presentation.models.GenreTypeEnum.*
-import kotlinx.android.synthetic.main.fragment_films.*
+import kotlinx.android.synthetic.main.fragment_movies.*
 
-class FilmsFragment : BaseFragment() {
+class MoviesFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_films, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_movies, container, false)
 
     override fun setupViews() {
         setupToolbar(R.id.filmToolbar, R.string.movies_label)
@@ -31,7 +31,7 @@ class FilmsFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.item_menu_search) navController.safeNavigate(
-            FilmsFragmentDirections.actionFilmsFragmentToSearchFilmFragment()
+            MoviesFragmentDirections.actionFilmsFragmentToSearchFilmFragment()
         )
         return super.onOptionsItemSelected(item)
     }

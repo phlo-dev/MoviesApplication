@@ -6,7 +6,7 @@ const val LANGUAGE_PT_VALUE = "pt_BR"
 
 // default urls
 const val BASE_URL = "https://api.themoviedb.org"
-const val BASE_IMAGE_URL = "http://image.tmdb.org/t/p/"
+const val BASE_IMAGE_URL = "http://image.tmdb.org/t/p"
 
 // default values
 const val ACTION_ID = 28

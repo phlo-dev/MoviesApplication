@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.features.search_film
+package com.pedro.moviesapplication.ui.search
 
 import android.os.Bundle
 import android.view.*
@@ -8,13 +8,15 @@ import androidx.core.view.isVisible
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.*
+import com.pedro.moviesapplication.extensions.addScrollListener
+import com.pedro.moviesapplication.extensions.setOnQueryTextListener
+import com.pedro.moviesapplication.extensions.setupToolbar
 import com.pedro.presentation.models.Movie
 import com.pedro.presentation.search.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search_film.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFilmFragment : BaseFragment() {
+class SearchMovieFragment : BaseFragment() {
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter { onClickMovie(it) } }
     private val viewModel by viewModel<SearchViewModel>()
 
@@ -25,14 +27,14 @@ class SearchFilmFragment : BaseFragment() {
     ): View? = inflater.inflate(R.layout.fragment_search_film, container, false)
 
     private fun onClickMovie(item: Movie) = navController.safeNavigate(
-        SearchFilmFragmentDirections.actionSearchFilmFragmentToFilmDetailsFragment(item)
+        SearchMovieFragmentDirections.actionSearchFilmFragmentToFilmDetailsFragment(item)
     )
 
     override fun setupViews() {
         setupToolbar(R.id.searchToolbar, setUpNavigation = true)
         searchFilmRecyclerView.adapter = movieAdapter
         searchFilmRecyclerView.addScrollListener { lasVisibleItem ->
-            if(lasVisibleItem >= movieAdapter.itemCount && viewModel.hasMoreResults()){
+            if (lasVisibleItem >= movieAdapter.itemCount && viewModel.hasMoreResults()) {
                 viewModel.search()
             }
         }
