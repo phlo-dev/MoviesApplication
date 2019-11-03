@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.safeNavigate
 import com.pedro.moviesapplication.features.FilmsFragmentDirections
 import com.pedro.presentation.models.GenreTypeEnum
 import com.pedro.presentation.models.Movie

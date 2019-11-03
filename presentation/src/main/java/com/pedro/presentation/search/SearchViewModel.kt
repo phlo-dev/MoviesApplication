@@ -11,7 +11,7 @@ import kotlinx.coroutines.cancel
 
 class SearchViewModel : ViewModel() {
     private var searchQuery = ""
-    private val queryViewState = MutableLiveData<ViewState<Movie>>()
+    private val queryViewState = MutableLiveData<ViewState<List<Movie>>>()
 
     fun search(query: String){
         if(queryViewState.value?.isLoading() == true) return

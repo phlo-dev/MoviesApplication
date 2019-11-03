@@ -5,7 +5,6 @@ import android.view.*
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.GenreViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
-import com.pedro.moviesapplication.extensions.safeNavigate
 import com.pedro.moviesapplication.extensions.setupToolbar
 import com.pedro.presentation.models.GenreTypeEnum.*
 import kotlinx.android.synthetic.main.fragment_films.*

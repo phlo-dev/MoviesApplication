@@ -7,9 +7,14 @@ import com.pedro.moviesapplication.R
 import com.pedro.presentation.models.Movie
 
 class MovieAdapter(
-    private val list: List<Movie>,
     private val onClick: (Movie) -> Unit
 ) : RecyclerView.Adapter<MovieViewHolder>() {
+    var list: List<Movie> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MovieViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
     )

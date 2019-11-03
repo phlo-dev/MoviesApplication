@@ -8,8 +8,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.pedro.moviesapplication.extensions.safeNavigateUp
 import com.pedro.moviesapplication.extensions.toast
 import com.pedro.presentation.ViewState
 import com.pedro.presentation.extensions.handleWithFlow
@@ -44,7 +45,7 @@ open class BaseFragment : Fragment() {
     fun <T> LiveData<ViewState<T>>.handleWithFlow(
         onLoading: () -> Unit = {},
         onNeutral: () -> Unit = {},
-        onFailure: (Throwable) -> Unit = {},
+        onFailure: (Throwable) -> Unit = { handleErrors(it) },
         onComplete: (() -> Unit) = {},
         onSuccess: (T) -> Unit
     ) = handleWithFlow(
@@ -56,5 +57,12 @@ open class BaseFragment : Fragment() {
         onSuccess
     )
 
+    fun NavController.safeNavigate(directions: NavDirections){
+        try{
+            navigate(directions)
+        }catch (ignore: Throwable){}
+    }
+
+    fun NavController.safeNavigateUp() = try { navigateUp() }catch (ignored: Exception){ true }
 
 }

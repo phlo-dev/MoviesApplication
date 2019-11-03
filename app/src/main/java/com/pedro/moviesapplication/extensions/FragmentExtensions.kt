@@ -39,11 +39,3 @@ fun Fragment.getDrawable(@DrawableRes drawableId: Int) =
 fun Fragment.getColor(@ColorRes colorId: Int) = ContextCompat.getColor(requireContext(), colorId)
 
 inline fun <reified Args : NavArgs> Fragment.navArgs() = requireActivity().navArgs<Args>()
-
-fun NavController.safeNavigate(directions: NavDirections){
-    try{
-        navigate(directions)
-    }catch (ignore: Throwable){}
-}
-
-fun NavController.safeNavigateUp() = try { navigateUp() }catch (ignored: Exception){ true }
