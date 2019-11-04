@@ -29,10 +29,14 @@ class MoviesFetchUseCase(
     fun hasMoreResults() = currentPage <= totalPage
 
     private suspend fun Response<ListPagination<Movie>>.convertToPresentation() = map {
+        incrementingPagination(it)
+        movieList
+    }
+
+    private fun incrementingPagination(it: ListPagination<Movie>) {
         movieList.addAll(it.list)
         currentPage++
         totalPage = it.totalPage
-        movieList
     }
 
     fun refresh(

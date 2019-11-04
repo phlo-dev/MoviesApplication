@@ -18,10 +18,14 @@ class SearchUseCase(
     fun hasMoreResults() = currentPage <= totalPage
 
     private suspend fun Response<ListPagination<Movie>>.convertToPresentation() = map {
+        incrementingPagination(it)
+        movieList
+    }
+
+    private fun incrementingPagination(it: ListPagination<Movie>) {
         movieList.addAll(it.list)
         currentPage++
         totalPage = it.totalPage
-        movieList
     }
 
     override suspend fun getResult(param: String): Response<List<Movie>> {
