@@ -1,10 +1,11 @@
-package com.pedro.moviesapplication.ui
+package com.pedro.moviesapplication.fragments
 
 import android.os.Bundle
 import android.view.*
 import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.GenreViewPagerAdapter
 import com.pedro.moviesapplication.base.BaseFragment
+import com.pedro.moviesapplication.extensions.setOnlyTextSelectedAsBold
 import com.pedro.moviesapplication.extensions.setupToolbar
 import com.pedro.presentation.models.GenreTypeEnum.*
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -27,6 +28,7 @@ class MoviesFragment : BaseFragment() {
         )
         filmViewPager.adapter = GenreViewPagerAdapter(childFragmentManager, fragmentHelperList)
         filmTabLayout.setupWithViewPager(filmViewPager)
+        filmTabLayout.setOnlyTextSelectedAsBold()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

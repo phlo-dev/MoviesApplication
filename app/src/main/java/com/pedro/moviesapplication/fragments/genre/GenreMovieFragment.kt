@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.ui.genre
+package com.pedro.moviesapplication.fragments.genre
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.pedro.moviesapplication.R
 import com.pedro.moviesapplication.adapter.MovieAdapter
 import com.pedro.moviesapplication.base.BaseFragment
 import com.pedro.moviesapplication.extensions.addScrollListener
-import com.pedro.moviesapplication.ui.MoviesFragmentDirections
+import com.pedro.moviesapplication.fragments.MoviesFragmentDirections
 import com.pedro.presentation.genre.GenreMovieViewModel
 import com.pedro.presentation.models.GenreTypeEnum
 import com.pedro.presentation.models.Movie
@@ -19,7 +19,7 @@ import org.koin.core.parameter.parametersOf
 
 class GenreMovieFragment : BaseFragment() {
     private var genreType: GenreTypeEnum = GenreTypeEnum.ACTION
-    private val viewModel by viewModel<GenreMovieViewModel>{ parametersOf(genreType) }
+    private val viewModel by viewModel<GenreMovieViewModel> { parametersOf(genreType) }
     private val movieAdapter by lazy { MovieAdapter { onClickMovie(it) } }
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class GenreMovieFragment : BaseFragment() {
     override fun setupViews() {
         genreMoviesRecyclerView.adapter = movieAdapter
         genreMoviesRecyclerView.addScrollListener { lastVisibleItem ->
-            if(lastVisibleItem == movieAdapter.itemCount && viewModel.hasMoreResults()){
+            if (lastVisibleItem == movieAdapter.itemCount && viewModel.hasMoreResults()) {
                 viewModel.fetchMovieListByGenre()
             }
         }
@@ -57,7 +57,9 @@ class GenreMovieFragment : BaseFragment() {
 
     override fun creatingObservers() {
         viewModel.getGenreMoviesViewState().handleWithFlow(
-            onLoading = { genreMoviesProgressBar.isVisible = true },
+            onLoading = {
+                if (!genreMovieRefreshLayout.isRefreshing) genreMoviesProgressBar.isVisible = true
+            },
             onComplete = {
                 genreMoviesProgressBar.isVisible = false
                 genreMovieRefreshLayout.isRefreshing = false

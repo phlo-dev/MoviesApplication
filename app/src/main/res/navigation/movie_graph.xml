@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/filmsFragment"
-        android:name="com.pedro.moviesapplication.ui.MoviesFragment"
+        android:name="com.pedro.moviesapplication.fragments.MoviesFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_movies">
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/filmDetailsFragment"
-        android:name="com.pedro.moviesapplication.ui.details.MovieDetailsFragment"
+        android:name="com.pedro.moviesapplication.fragments.details.MovieDetailsFragment"
         android:label="FilmDetailsFragment"
         tools:layout="@layout/fragment_movie_details" >
         <argument
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/searchFilmFragment"
-        android:name="com.pedro.moviesapplication.ui.search.SearchMovieFragment"
+        android:name="com.pedro.moviesapplication.fragments.search.SearchMovieFragment"
         android:label="SearchFilmFragment"
         tools:layout="@layout/fragment_search_film">
         <action

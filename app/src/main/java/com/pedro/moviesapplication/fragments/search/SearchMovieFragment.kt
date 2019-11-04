@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.ui.search
+package com.pedro.moviesapplication.fragments.search
 
 import android.os.Bundle
 import android.view.*

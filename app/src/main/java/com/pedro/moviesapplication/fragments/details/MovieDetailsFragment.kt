@@ -1,4 +1,4 @@
-package com.pedro.moviesapplication.ui.details
+package com.pedro.moviesapplication.fragments.details
 
 import android.os.Bundle
 import android.view.LayoutInflater

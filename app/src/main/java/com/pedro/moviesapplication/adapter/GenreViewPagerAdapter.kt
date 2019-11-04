@@ -2,7 +2,7 @@ package com.pedro.moviesapplication.adapter
 
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.pedro.moviesapplication.ui.genre.GenreMovieFragment
+import com.pedro.moviesapplication.fragments.genre.GenreMovieFragment
 import com.pedro.presentation.models.GenreTypeEnum
 
 class GenreViewPagerAdapter(

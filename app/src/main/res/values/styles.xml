@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="searchViewStyle">@style/DefaultSearchView</item>
     </style>
 
     <style name="DefaultToolbar">
@@ -15,12 +16,18 @@
     </style>
 
     <style name="DefaultTabLayout">
+        <item name="tabTextAppearance">@style/TextViewTabLayout</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="tabBackground">@color/colorPrimary</item>
         <item name="tabTextColor">@android:color/white</item>
         <item name="tabSelectedTextColor">@android:color/white</item>
         <item name="tabIndicatorColor">@color/gold</item>
         <item name="tabIndicatorHeight">4dp</item>
+    </style>
+
+    <style name="TextViewTabLayout" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="DefaultRecyclerView">
@@ -53,6 +60,10 @@
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+    </style>
+
+    <style name="DefaultSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@null</item>
     </style>
 
 </resources>

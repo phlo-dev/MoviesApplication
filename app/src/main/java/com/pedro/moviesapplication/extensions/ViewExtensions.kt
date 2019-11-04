@@ -1,13 +1,15 @@
 package com.pedro.moviesapplication.extensions
 
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
 import com.pedro.moviesapplication.R
 import com.squareup.picasso.Picasso
 
@@ -54,3 +56,44 @@ fun RecyclerView.addScrollListener(
         }
     })
 }
+
+fun TabLayout.addOnTabSelectedListener(
+    onTabReselected: (TabLayout.Tab) -> Unit = {},
+    onTabUnselected: (TabLayout.Tab) -> Unit = {},
+    onTabSelected: (TabLayout.Tab) -> Unit = {}
+) {
+    addOnTabSelectedListener(object : TabLayout.BaseOnTabSelectedListener<TabLayout.Tab> {
+        override fun onTabReselected(tab: TabLayout.Tab) {
+            onTabReselected(tab)
+        }
+
+        override fun onTabUnselected(tab: TabLayout.Tab) {
+            onTabUnselected(tab)
+        }
+
+        override fun onTabSelected(tab: TabLayout.Tab) {
+            onTabSelected(tab)
+        }
+    })
+}
+
+fun TabLayout.setOnlyTextSelectedAsBold() {
+    addOnTabSelectedListener(
+        onTabSelected = { tab ->
+            getTextView(tab.position)?.run{
+                textSize = 16f
+                typeface = context.getFont(R.font.poppins_bold)
+            }
+        },
+        onTabUnselected = { tab ->
+            getTextView(tab.position)?.run{
+                textSize = 16f
+                typeface = context.getFont(R.font.poppins)
+            }
+        }
+    )
+}
+
+fun TabLayout.getTextView(position: Int): TextView? =
+    (((getChildAt(0) as? ViewGroup)?.getChildAt(position) as? ViewGroup)
+        ?.getChildAt(1) as? TextView)
