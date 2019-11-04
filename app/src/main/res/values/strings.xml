@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movies Application</string>
+    <string name="app_name">Movies</string>
     <string name="movies_label">Movies</string>
     <string name="action_label">Ação</string>
     <string name="drama_label">Drama</string>
