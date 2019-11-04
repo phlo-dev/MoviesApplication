@@ -81,28 +81,15 @@ fun TabLayout.addOnTabSelectedListener(
     })
 }
 
-fun Fragment.setOnlyTextSelectedAsBold(tabLayout: TabLayout) {
-    val lifeCycleObserver = object : LifecycleObserver {
-        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        fun updateTextView() {
-            tabLayout.getTextView(tabLayout.selectedTabPosition)?.run{
-                typeface = requireContext().getFont(R.font.poppins_bold)
-                textSize = 16f
-            }
-        }
-    }
-    lifecycle.addObserver(lifeCycleObserver)
-
-    tabLayout.addOnTabSelectedListener(
+fun TabLayout.setOnlyTextSelectedAsBold() {
+    addOnTabSelectedListener(
         onTabSelected = { tab ->
-            tabLayout.getTextView(tab.position)?.run {
-                textSize = 16f
+            getTextView(tab.position)?.run {
                 typeface = context.getFont(R.font.poppins_bold)
             }
         },
         onTabUnselected = { tab ->
-            tabLayout.getTextView(tab.position)?.run {
-                textSize = 16f
+            getTextView(tab.position)?.run {
                 typeface = context.getFont(R.font.poppins)
             }
         }

@@ -30,7 +30,14 @@ class MoviesFragment : BaseFragment() {
         )
         filmViewPager.adapter = GenreViewPagerAdapter(childFragmentManager, fragmentHelperList)
         filmTabLayout.setupWithViewPager(filmViewPager)
-        setOnlyTextSelectedAsBold(filmTabLayout)
+        filmTabLayout.setOnlyTextSelectedAsBold()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        filmTabLayout.getTextView(filmTabLayout.selectedTabPosition)?.run {
+            typeface = requireContext().getFont(R.font.poppins_bold)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
