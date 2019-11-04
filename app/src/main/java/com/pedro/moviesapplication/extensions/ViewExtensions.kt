@@ -7,6 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
@@ -77,16 +81,27 @@ fun TabLayout.addOnTabSelectedListener(
     })
 }
 
-fun TabLayout.setOnlyTextSelectedAsBold() {
-    addOnTabSelectedListener(
+fun Fragment.setOnlyTextSelectedAsBold(tabLayout: TabLayout) {
+    val lifeCycleObserver = object : LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        fun updateTextView() {
+            tabLayout.getTextView(tabLayout.selectedTabPosition)?.run{
+                typeface = requireContext().getFont(R.font.poppins_bold)
+                textSize = 16f
+            }
+        }
+    }
+    lifecycle.addObserver(lifeCycleObserver)
+
+    tabLayout.addOnTabSelectedListener(
         onTabSelected = { tab ->
-            getTextView(tab.position)?.run{
+            tabLayout.getTextView(tab.position)?.run {
                 textSize = 16f
                 typeface = context.getFont(R.font.poppins_bold)
             }
         },
         onTabUnselected = { tab ->
-            getTextView(tab.position)?.run{
+            tabLayout.getTextView(tab.position)?.run {
                 textSize = 16f
                 typeface = context.getFont(R.font.poppins)
             }
