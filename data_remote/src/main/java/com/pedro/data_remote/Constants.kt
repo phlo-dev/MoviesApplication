@@ -2,7 +2,7 @@ package com.pedro.data_remote
 
 // Default query values
 const val API_QUERY_VALUE = "4a869fe172f0af675b1bedc20f7a273e"
-const val LANGUAGE_PT_VALUE = "pt_BR"
+const val LANGUAGE_PT_VALUE = "pt-BR"
 
 // default urls
 const val BASE_URL = "https://api.themoviedb.org"
