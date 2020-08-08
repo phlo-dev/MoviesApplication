@@ -46,8 +46,4 @@ class GenreMovieViewModel(
 
     fun getGenreMoviesViewState() = genreMoviesViewState.asLiveData()
 
-    override fun onCleared() {
-        getMovies.cancel()
-        super.onCleared()
-    }
 }
