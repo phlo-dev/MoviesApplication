@@ -31,7 +31,13 @@ ext{
     picasso              = "com.squareup.picasso:picasso:${picassoVersion}"
     multiDex             = "androidx.multidex:multidex:$multiDexVersion"
     //Tests
-    junit = "junit:junit:$junitVersion"
-    androidTestRunner = "androidx.test:runner:$androidTestRunnerVersion"
-    espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
+    junit                = "junit:junit:$junitVersion"
+    androidTestRunner    = "androidx.test:runner:$androidTestRunnerVersion"
+    espresso             = "androidx.test.espresso:espresso-core:$espressoVersion"
+    mockk                = "io.mockk:mockk:$mockkVersion"
+    kotlinTest           = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    kotlinJunit          = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+    mockitoKotlin        = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    koinTest             = "org.koin:koin-test:$koinVersion"
+    coreTesting          = "androidx.arch.core:core-testing:$coreTestVersion"
 }

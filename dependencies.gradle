@@ -61,6 +61,14 @@ ext {
     ]
 
     testDependencies = [
-
+            [configuration: "implementation", dependency: "$junit"],
+            [configuration: "implementation", dependency: "$androidTestRunner"],
+            [configuration: "implementation", dependency: "$espresso"],
+            [configuration: "implementation", dependency: "$mockk"],
+            [configuration: "implementation", dependency: "$kotlinTest"],
+            [configuration: "implementation", dependency: "$kotlinJunit"],
+            [configuration: "implementation", dependency: "$mockitoKotlin"],
+            [configuration: "implementation", dependency: "$koinTest"],
+            [configuration: "implementation", dependency: "$coreTesting"],
     ]
 }

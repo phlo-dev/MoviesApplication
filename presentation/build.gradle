@@ -24,6 +24,6 @@ android {
 
 dependencies {
     presentationDependencies.each { add(it.configuration, it.dependency, it.options) }
-
+    testDependencies.each { add(it.configuration, it.dependency, it.options) }
     implementation project(':domain')
 }

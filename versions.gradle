@@ -31,8 +31,10 @@ ext{
         multiDexVersion            = "2.0.1"
 
         //Tests
-        junitVersion = "4.12"
-        androidTestRunnerVersion = "1.2.0"
-        espressoVersion = "3.2.0"
-        mockitoVersion = "2.23.4"
+        junitVersion               = "4.12"
+        androidTestRunnerVersion   = "1.2.0"
+        espressoVersion            = "3.2.0"
+        mockitoKotlinVersion       = "2.0.0"
+        coreTestVersion            = "2.0.0"
+        mockkVersion               = "1.9.2"
 }
