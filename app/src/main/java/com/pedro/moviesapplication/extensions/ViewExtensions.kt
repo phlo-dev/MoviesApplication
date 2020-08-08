@@ -1,6 +1,5 @@
 package com.pedro.moviesapplication.extensions
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
@@ -35,7 +34,6 @@ fun View.animateWithScale(scaleX: Float = 1f, scaleY: Float = 1f) = animate()
     .scaleX(scaleX).scaleY(scaleY).setInterpolator(DecelerateInterpolator()).start()
 
 fun ImageView.loadImageUrl(url: String?, @DrawableRes placeHolder: Int? = null) {
-    Log.d("Picasso download HTTP:", url ?: "")
     Picasso.get()
         .load(url)
         .run {
