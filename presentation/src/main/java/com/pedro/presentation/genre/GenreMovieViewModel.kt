@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import com.pedro.domain.usecases.MoviesFetchUseCase
+import com.pedro.domain.usecases.GetMovies
 import com.pedro.presentation.ViewState.Companion.loading
 import com.pedro.presentation.extensions.*
 import com.pedro.presentation.mapper.fromDomain
@@ -17,14 +17,14 @@ class GenreMovieViewModel(
     private val genreType: GenreTypeEnum
 ) : ViewModel(), LifecycleObserver, KoinComponent {
     private val genreMoviesViewState = createViewState<List<Movie>>()
-    private val moviesFetchUseCase: MoviesFetchUseCase by useCase()
+    private val getMovies: GetMovies by useCase()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun fetchMovieListByGenre() {
         if (genreMoviesViewState.value?.isLoading() == true) return
         genreMoviesViewState.value = loading()
 
-        moviesFetchUseCase.execute(
+        getMovies.execute(
             param = genreType.toParam(),
             onSuccess = { genreMoviesViewState.postSuccess(it.fromDomain()) },
             onFailure = { genreMoviesViewState.postFailure(it) }
@@ -32,22 +32,22 @@ class GenreMovieViewModel(
     }
 
     fun refreshMovieList() {
-        if (genreMoviesViewState.value?.isLoading() == true) moviesFetchUseCase.cancel()
+        if (genreMoviesViewState.value?.isLoading() == true) getMovies.cancel()
         genreMoviesViewState.value = loading()
 
-        moviesFetchUseCase.refresh(
+        getMovies.refresh(
             param = genreType.toParam(),
             onSuccess = { genreMoviesViewState.postSuccess(it.fromDomain()) },
             onFailure = { genreMoviesViewState.postFailure(it) }
         )
     }
 
-    fun hasMoreResults() = moviesFetchUseCase.hasMoreResults()
+    fun hasMoreResults() = getMovies.hasMoreResults()
 
     fun getGenreMoviesViewState() = genreMoviesViewState.asLiveData()
 
     override fun onCleared() {
-        moviesFetchUseCase.cancel()
+        getMovies.cancel()
         super.onCleared()
     }
 }

@@ -6,7 +6,7 @@ import com.pedro.domain.models.Response
 import com.pedro.domain.repository.MoviesRepository
 import kotlinx.coroutines.CoroutineScope
 
-class SearchUseCase(
+class SearchMovies(
     scope: CoroutineScope,
     private val repository: MoviesRepository
 ) : UseCase<String, List<Movie>>(scope) {

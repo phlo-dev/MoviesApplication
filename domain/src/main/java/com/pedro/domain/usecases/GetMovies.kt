@@ -8,7 +8,7 @@ import com.pedro.domain.models.Response
 import com.pedro.domain.repository.MoviesRepository
 import kotlinx.coroutines.CoroutineScope
 
-class MoviesFetchUseCase(
+class GetMovies(
     scope: CoroutineScope,
     private val movieRepository: MoviesRepository
 ) : UseCase<GenreTypeParamEnum, List<Movie>>(scope) {
