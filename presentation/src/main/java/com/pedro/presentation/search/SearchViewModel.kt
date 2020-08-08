@@ -28,8 +28,4 @@ class SearchViewModel : ViewModel(), KoinComponent {
 
     fun getQueryViewState() = queryViewState.asLiveData()
 
-    override fun onCleared() {
-        searchMovies.cancel()
-        super.onCleared()
-    }
 }
