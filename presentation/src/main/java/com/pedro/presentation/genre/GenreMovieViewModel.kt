@@ -13,7 +13,9 @@ import com.pedro.presentation.models.GenreTypeEnum
 import com.pedro.presentation.models.Movie
 import org.koin.standalone.KoinComponent
 
-class GenreMovieViewModel(val genreType: GenreTypeEnum) : ViewModel(), LifecycleObserver, KoinComponent {
+class GenreMovieViewModel(
+    private val genreType: GenreTypeEnum
+) : ViewModel(), LifecycleObserver, KoinComponent {
     private val genreMoviesViewState = createViewState<List<Movie>>()
     private val moviesFetchUseCase: MoviesFetchUseCase by useCase()
 
