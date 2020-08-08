@@ -1,5 +1,6 @@
 package com.pedro.moviesapplication.extensions
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
@@ -7,10 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
@@ -38,6 +35,7 @@ fun View.animateWithScale(scaleX: Float = 1f, scaleY: Float = 1f) = animate()
     .scaleX(scaleX).scaleY(scaleY).setInterpolator(DecelerateInterpolator()).start()
 
 fun ImageView.loadImageUrl(url: String?, @DrawableRes placeHolder: Int? = null) {
+    Log.d("Picasso download HTTP:", url ?: "")
     Picasso.get()
         .load(url)
         .run {

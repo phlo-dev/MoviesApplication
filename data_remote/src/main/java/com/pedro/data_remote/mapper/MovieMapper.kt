@@ -19,5 +19,5 @@ fun MovieListResponse.toData() = com.pedro.data.models.MovieListResponse(
 
 fun buildImagePath(path: String?) = when(path.isNullOrBlank()){
     true -> path
-    else -> "$BASE_IMAGE_URL/$FILE_SIZE/$path"
+    else -> "$BASE_IMAGE_URL/$FILE_SIZE$path"
 }
