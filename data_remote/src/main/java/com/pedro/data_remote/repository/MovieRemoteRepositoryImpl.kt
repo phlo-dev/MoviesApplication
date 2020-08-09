@@ -8,23 +8,8 @@ import com.pedro.data_remote.service.MoviesWebService
 class MovieRemoteRepositoryImpl(
     private val moviesWebService: MoviesWebService
 ) : MovieRemoteRepository {
-    override suspend fun getActionMovies(page: Int) =
-        apiCall { moviesWebService.getMovies(page, ACTION_ID) }.map {
-            it.toData()
-        }
-
-    override suspend fun getDramaMovies(page: Int) =
-        apiCall { moviesWebService.getMovies(page, DRAMA_ID) }.map {
-            it.toData()
-        }
-
-    override suspend fun getFantasyMovies(page: Int) =
-        apiCall { moviesWebService.getMovies(page, FANTASY_ID) }.map {
-            it.toData()
-        }
-
-    override suspend fun getFictionMovies(page: Int) =
-        apiCall { moviesWebService.getMovies(page, FICTION_ID) }.map {
+    override suspend fun getCategoryMovies(page: Int, categoryId: Int) =
+        apiCall { moviesWebService.getMovies(page, categoryId) }.map {
             it.toData()
         }
 

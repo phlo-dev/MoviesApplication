@@ -9,10 +9,6 @@ const val BASE_URL = "https://api.themoviedb.org"
 const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p"
 
 // default values
-const val ACTION_ID = 28
-const val DRAMA_ID = 18
-const val FANTASY_ID = 14
-const val FICTION_ID = 878
 const val FILE_SIZE = "w500"
 
 //Querys
