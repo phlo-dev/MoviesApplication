@@ -9,7 +9,7 @@ import org.koin.standalone.inject
 abstract class UseCase<P, R>(private val scope: CoroutineScope) : KoinComponent {
     private val threadContextProvider: ThreadContextProvider by inject()
 
-    protected abstract suspend fun getResult(param: P): Response<R>
+    abstract suspend fun getResult(param: P): Response<R>
 
     fun execute(
         param: P,

@@ -8,7 +8,7 @@ import com.pedro.data_remote.service.MoviesWebService
 class MovieRemoteRepositoryImpl(
     private val moviesWebService: MoviesWebService
 ) : MovieRemoteRepository {
-    override suspend fun getCategoryMovies(page: Int, categoryId: Int) =
+    override suspend fun getMoviesByCategory(page: Int, categoryId: Int) =
         apiCall { moviesWebService.getMovies(page, categoryId) }.map {
             it.toData()
         }

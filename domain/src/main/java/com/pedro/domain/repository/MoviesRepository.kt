@@ -5,6 +5,6 @@ import com.pedro.domain.models.Movie
 import com.pedro.domain.models.Response
 
 interface MoviesRepository {
-    suspend fun getCategoryMovies(page: Int, categoryId: Int): Response<ListPagination<Movie>>
+    suspend fun getMoviesByCategory(page: Int, categoryId: Int): Response<ListPagination<Movie>>
     suspend fun searchMoviesWithQuery(query: String, page: Int): Response<ListPagination<Movie>>
 }
