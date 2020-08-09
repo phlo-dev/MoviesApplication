@@ -6,6 +6,18 @@ ext {
             [configuration: "implementation", dependency: "$androidKtxCore"]
     ]
 
+    testDependencies = [
+            [configuration: "implementation", dependency: "$junit"],
+            [configuration: "implementation", dependency: "$androidTestRunner"],
+            [configuration: "implementation", dependency: "$espresso"],
+            [configuration: "implementation", dependency: "$mockk"],
+            [configuration: "implementation", dependency: "$kotlinTest"],
+            [configuration: "implementation", dependency: "$kotlinJunit"],
+            [configuration: "implementation", dependency: "$mockitoKotlin"],
+            [configuration: "implementation", dependency: "$koinTest"],
+            [configuration: "implementation", dependency: "$coreTesting"],
+    ]
+
     uiDependencies = defaultDependencies + [
             [configuration: "implementation", dependency: "$appCompat"],
             [configuration: "implementation", dependency: "$navigationUi"],
@@ -38,7 +50,7 @@ ext {
             [configuration: "implementation", dependency: "$lifecycleXt"]
     ]
 
-    domainDependencies = defaultDependencies + [
+    domainDependencies = defaultDependencies + testDependencies + [
             [configuration: "implementation", dependency: "$koinViewModel"],
             [configuration: "implementation", dependency: "$koinScope"]
     ]
@@ -58,17 +70,5 @@ ext {
             [configuration: "implementation", dependency: "$retrofitCoroutine"],
             [configuration: "implementation", dependency: "$httpInterceptor"],
             [configuration: "implementation", dependency: "$gsonConvertFacotory"]
-    ]
-
-    testDependencies = [
-            [configuration: "implementation", dependency: "$junit"],
-            [configuration: "implementation", dependency: "$androidTestRunner"],
-            [configuration: "implementation", dependency: "$espresso"],
-            [configuration: "implementation", dependency: "$mockk"],
-            [configuration: "implementation", dependency: "$kotlinTest"],
-            [configuration: "implementation", dependency: "$kotlinJunit"],
-            [configuration: "implementation", dependency: "$mockitoKotlin"],
-            [configuration: "implementation", dependency: "$koinTest"],
-            [configuration: "implementation", dependency: "$coreTesting"],
     ]
 }
